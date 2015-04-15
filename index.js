@@ -13,11 +13,14 @@ var server = restify.createServer({
 server.get('/smarttv/remote/:key', function(req, res) {
 	var key = req.params.key;
 	remote.send(key, function(err) {
-		if(err==null) {
-			res.status(200);
+		if(err) {
+			console.log(err);
+			res.status(400);
+			res.end();
 		}
 		else {
-			res.status(400);
+			res.status(200);
+			res.end();
 		}
 	});
 });
