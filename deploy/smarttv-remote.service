@@ -1,0 +1,13 @@
+[Service]
+ExecStart=/usr/bin/node /var/www/node/smarttv-remote/index.js
+WorkingDirectory=/var/www/node/smarttv-remote
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=smarttv-remote-service
+User=webserver
+Group=webserver
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
